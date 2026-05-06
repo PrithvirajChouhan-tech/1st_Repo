@@ -1,0 +1,165 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Base ─────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg-primary:   #0a0a0f;
+  --bg-secondary: #111122;
+  --bg-card:      #13131f;
+  --accent-blue:  #3b82f6;
+  --accent-purple:#8b5cf6;
+  --accent-cyan:  #06b6d4;
+  --text-main:    #f1f5f9;
+  --text-muted:   #94a3b8;
+  --border:       rgba(99,102,241,0.15);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', 'Poppins', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* ─── Scrollbar ─────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #3b82f6, #8b5cf6);
+  border-radius: 99px;
+}
+
+/* ─── Selection ─────────────────────────────────────────────────────── */
+::selection { background: rgba(139,92,246,0.35); color: #fff; }
+
+/* ─── Scroll Progress Bar ───────────────────────────────────────────── */
+#scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  width: 0%;
+  z-index: 9999;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #06b6d4);
+  background-size: 200%;
+  animation: gradient-x 4s ease infinite;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 12px #8b5cf6;
+}
+
+/* ─── Glass Card ────────────────────────────────────────────────────── */
+.glass {
+  background: rgba(19,19,31,0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+.glass-nav {
+  background: rgba(10,10,15,0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+
+/* ─── Gradient Text ─────────────────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6, #06b6d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-2 {
+  background: linear-gradient(135deg, #8b5cf6, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Glow effects ──────────────────────────────────────────────────── */
+.glow-blue  { box-shadow: 0 0 30px rgba(59,130,246,0.3); }
+.glow-purple{ box-shadow: 0 0 30px rgba(139,92,246,0.3); }
+.glow-cyan  { box-shadow: 0 0 30px rgba(6,182,212,0.3); }
+
+/* ─── Animated gradient background ─────────────────────────────────── */
+.animated-bg {
+  background: linear-gradient(135deg, #0a0a0f, #0d0d1f, #0a0f1a, #0d0a1f);
+  background-size: 400% 400%;
+  animation: gradient-x 12s ease infinite;
+}
+
+/* ─── Keyframes ─────────────────────────────────────────────────────── */
+@keyframes gradient-x {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-18px); }
+}
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Utility ───────────────────────────────────────────────────────── */
+.section-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.section-subtitle {
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  color: var(--text-muted);
+  max-width: 540px;
+}
+
+/* ─── Particles canvas ──────────────────────────────────────────────── */
+#particles-canvas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── Loader ────────────────────────────────────────────────────────── */
+.loader-bar {
+  width: 180px; height: 3px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.loader-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #06b6d4);
+  background-size: 200%;
+  animation: shimmer 1.5s linear infinite;
+  border-radius: 99px;
+  animation: loader-fill 2s ease forwards, shimmer 1.5s linear infinite;
+}
+@keyframes loader-fill {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+
+/* ─── Noise texture overlay ─────────────────────────────────────────── */
+.noise::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.4;
+}

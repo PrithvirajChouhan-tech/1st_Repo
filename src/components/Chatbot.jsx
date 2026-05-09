@@ -329,7 +329,10 @@ export default function Chatbot() {
   // ── Styles (theme-aware inline) ────────────────────────────────────────────
   const s = {
     window: {
-      position: 'fixed', bottom: 88, right: 24, zIndex: 9998,
+      position: 'fixed', 
+      bottom: 'calc(88px + env(safe-area-inset-bottom, 0px))', 
+      right: 'calc(24px + env(safe-area-inset-right, 0px))', 
+      zIndex: 9998,
       width: 380, maxWidth: 'calc(100vw - 48px)',
       height: 520, display: 'flex', flexDirection: 'column',
       borderRadius: 20, overflow: 'hidden',
@@ -386,7 +389,10 @@ export default function Chatbot() {
       boxShadow: '0 4px 12px rgba(109,40,217,0.35)',
     },
     bubble: {
-      position: 'fixed', bottom: 24, right: 24, zIndex: 9999,
+      position: 'fixed', 
+      bottom: 'calc(24px + env(safe-area-inset-bottom, 0px))', 
+      right: 'calc(24px + env(safe-area-inset-right, 0px))', 
+      zIndex: 9999,
       width: 56, height: 56, borderRadius: '50%', border: 'none', cursor: 'pointer',
       background: 'linear-gradient(135deg,#3B0C8C,#6D28D9)',
       display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -637,10 +643,20 @@ export default function Chatbot() {
       <motion.button
         style={s.bubble}
         onClick={() => setOpen(o => !o)}
+        initial={{ scale: 0, opacity: 0 }}
+        animate={open 
+          ? { scale: 1, opacity: 1, rotate: 0 } 
+          : { scale: 1, opacity: 1, rotate: [0, 5, -5, 0] }
+        }
         whileHover={{ scale: 1.10 }}
         whileTap={{ scale: 0.93 }}
-        animate={open ? { rotate: 0 } : { rotate: [0, 10, -10, 0] }}
-        transition={open ? {} : { duration: 2, repeat: Infinity, repeatDelay: 4 }}
+        transition={open 
+          ? { type: 'spring', stiffness: 400, damping: 25 } 
+          : { 
+              rotate: { duration: 2, repeat: Infinity, repeatDelay: 4 },
+              scale: { type: 'spring', stiffness: 400, damping: 25 }
+            }
+        }
         title="Chat with Prithviraj's AI"
       >
         <AnimatePresence mode="wait" initial={false}>

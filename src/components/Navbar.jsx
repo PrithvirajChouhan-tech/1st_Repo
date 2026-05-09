@@ -149,7 +149,17 @@ export default function Navbar({ onResumeClick }) {
 
         {/* Mobile toggle + burger */}
         <div className="md:hidden flex items-center gap-2">
-          <span style={{ color: 'rgba(255,255,255,0.80)', fontSize: '10px', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', userSelect: 'none' }}>
+          <span style={{ 
+            color: 'rgba(255,255,255,0.80)', 
+            fontSize: '10px', 
+            fontWeight: 600, 
+            letterSpacing: '0.06em', 
+            textTransform: 'uppercase', 
+            userSelect: 'none',
+            width: '38px',
+            textAlign: 'center',
+            display: 'inline-block'
+          }}>
             {isDark ? 'Dark' : 'Light'}
           </span>
           <ThemeToggle />

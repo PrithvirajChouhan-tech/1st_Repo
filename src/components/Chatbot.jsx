@@ -66,7 +66,7 @@ async function generateLocalResponse(userMessage) {
     hire: "Yes! I'm available for internships, freelance projects, and collaborations. Feel free to reach out at prithvirajsinghworks@gmail.com",
     projects: "I'm currently building a Delivery Time Prediction project using Regression — should be live soon! Check my GitHub for the source code.",
     based: "I'm based in Indore, Madhya Pradesh, India. Currently in my 2nd year at Acropolis Institute of Technology and Research.",
-    about: "Hi! I'm Prithviraj, a CS student at Acropolis Institute specializing in AI/ML. I code in Python and C++, and I'm actively looking for exciting internship opportunities!",
+    about: "Hello !!! I'm Prithviraj Singh Chouhan, a 2nd-year Computer Science student at Acropolis Institute, Indore, specializing in AI/ML. I'm proficient in Python, C++, and data science tools like NumPy and Pandas. My goal is to land an internship where I can apply my skills and grow. I'm based in Indore and always open to exciting opportunities!",
     python: "Python is one of my strong suits! I use it for data analysis, machine learning, and building AI-powered applications with libraries like NumPy and Pandas.",
     cpp: "I have strong knowledge of C++! It's one of my core programming languages and I use it for competitive programming and systems-level development.",
     numpy: "NumPy is essential for my data science work! I use it for numerical computations, array manipulation, and mathematical operations in ML projects.",

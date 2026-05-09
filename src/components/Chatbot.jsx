@@ -115,7 +115,7 @@ async function generateLocalResponse(userMessage) {
     return matched.map(key => responses[key]).join('  ')
   }
 
-  return "I'm here to answer any questions you have! Feel free to ask about my skills, projects, certifications, or how we can work together. What would you like to know?"
+  return "I'm here to help! You can ask about my skills, projects, or how to contact me."
 }
 
 

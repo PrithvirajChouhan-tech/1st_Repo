@@ -137,7 +137,7 @@ export default function Contact() {
   }
 
   const inputClass = (field) =>
-    `w-full px-4 py-3 rounded-xl bg-white/5 border text-sm text-white placeholder-slate-600
+    `w-full px-4 py-3 rounded-xl bg-white/5 border text-base text-white placeholder-slate-600
      focus:outline-none focus:ring-1 transition-all duration-300
      ${errors[field] && touched[field]
        ? 'border-red-500/60 focus:border-red-500/80 focus:ring-red-500/20'

@@ -46,9 +46,6 @@ export default function Navbar({ onResumeClick }) {
   return (
     <motion.nav
       className="fixed top-0 left-0 right-0 z-50 glass-nav"
-      initial={{ y: -80 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
 

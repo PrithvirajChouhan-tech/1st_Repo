@@ -374,7 +374,7 @@ export default function Chatbot() {
       display: 'flex', gap: 8, alignItems: 'flex-end',
     },
     input: {
-      flex: 1, padding: '10px 14px', borderRadius: 12, fontSize: 13.5, resize: 'none',
+      flex: 1, padding: '10px 14px', borderRadius: 12, fontSize: 16, resize: 'none',
       border: isDark ? '1px solid rgba(139,92,246,0.30)' : '1px solid #C4B5FD',
       background: isDark ? 'rgba(139,92,246,0.08)' : '#F5F0FF',
       color: isDark ? '#e2d9f3' : '#1A1035',
@@ -643,20 +643,8 @@ export default function Chatbot() {
       <motion.button
         style={s.bubble}
         onClick={() => setOpen(o => !o)}
-        initial={{ scale: 0, opacity: 0 }}
-        animate={open 
-          ? { scale: 1, opacity: 1, rotate: 0 } 
-          : { scale: 1, opacity: 1, rotate: [0, 5, -5, 0] }
-        }
         whileHover={{ scale: 1.10 }}
         whileTap={{ scale: 0.93 }}
-        transition={open 
-          ? { type: 'spring', stiffness: 400, damping: 25 } 
-          : { 
-              rotate: { duration: 2, repeat: Infinity, repeatDelay: 4 },
-              scale: { type: 'spring', stiffness: 400, damping: 25 }
-            }
-        }
         title="Chat with Prithviraj's AI"
       >
         <AnimatePresence mode="wait" initial={false}>

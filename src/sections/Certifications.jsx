@@ -83,17 +83,17 @@ function CertCard({ cert, index, onView }) {
         style={{ background: `${cert.color}06` }}>
         {cert.image ? (
           <>
-            <img src={cert.image} alt={cert.title} className="w-full h-full object-cover rounded-xl" />
-            {/* View overlay on hover */}
-            <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-xl">
-              <span className="text-white text-xs font-semibold flex items-center gap-1.5">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <img src={cert.image} alt={cert.title} className="w-full h-full object-cover rounded-xl blur-[5px] opacity-70 group-hover:blur-[3px] group-hover:opacity-100 transition-all duration-300" />
+            {/* View overlay always visible but enhanced on hover */}
+            <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center rounded-xl">
+              <span className="text-white text-sm font-semibold flex items-center gap-2 drop-shadow-md">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                     d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                     d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                 </svg>
-                View Certificate
+                Click to view
               </span>
             </div>
           </>

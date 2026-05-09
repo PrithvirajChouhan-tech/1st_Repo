@@ -277,10 +277,9 @@ export default function Chatbot() {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [msgs, loading])
 
-  // Focus input when chat opens; stop speech when chat closes
+  // Stop speech when chat closes
   useEffect(() => {
-    if (open) setTimeout(() => inputRef.current?.focus(), 300)
-    else {
+    if (!open) {
       stopSpeak()
       recognitionRef.current?.stop()
       setIsListening(false)
@@ -334,7 +333,8 @@ export default function Chatbot() {
       right: 'calc(24px + env(safe-area-inset-right, 0px))', 
       zIndex: 9998,
       width: 380, maxWidth: 'calc(100vw - 48px)',
-      height: 520, display: 'flex', flexDirection: 'column',
+      height: 520, maxHeight: 'calc(100dvh - 120px)',
+      display: 'flex', flexDirection: 'column',
       borderRadius: 20, overflow: 'hidden',
       background: isDark ? '#0f0f1a' : '#ffffff',
       boxShadow: isDark

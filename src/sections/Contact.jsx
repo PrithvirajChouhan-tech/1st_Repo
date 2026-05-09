@@ -2,13 +2,7 @@ import { useRef, useState } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 import useWeb3Forms from '@web3forms/react'
 
-// ─── 🔑 ONLY THING YOU NEED TO DO ──────────────────────────────────────────
-//
-//   1. Go to  https://web3forms.com
-//   2. Enter your email  →  they send you a free Access Key instantly
-//   3. Paste that key below (looks like: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
-//
-const WEB3FORMS_ACCESS_KEY = '19bdea6d-4074-488d-8543-8791389c8652'
+const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY
 
 // ─── Constants ───────────────────────────────────────────────────────────────
 const MAX_MSG = 500
@@ -133,13 +127,6 @@ export default function Contact() {
     setErrors(errs)
     if (Object.keys(errs).length > 0) return
 
-    // Guard: key not configured
-    if (WEB3FORMS_ACCESS_KEY === 'YOUR_ACCESS_KEY_HERE') {
-      setStatus('unconfigured')
-      setTimeout(() => setStatus('idle'), 7000)
-      return
-    }
-
     setStatus('sending')
     await submit({
       name:    form.name,
@@ -207,7 +194,7 @@ export default function Contact() {
             <div className="glass rounded-2xl p-6 flex flex-col gap-5">
               <h3 className="font-bold text-white">Contact Information</h3>
 
-              <a href="mailto:dipendrsinghchouhan@gmail.com"
+              <a href="mailto:prithvirajsinghworks@gmail.com"
                 className="flex items-center gap-4 group">
                 <div className="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20
                   flex items-center justify-center text-purple-400
@@ -220,7 +207,7 @@ export default function Contact() {
                 <div>
                   <p className="text-xs text-slate-500">Email</p>
                   <p className="text-sm text-slate-300 group-hover:text-purple-400 transition-colors">
-                    dipendrsinghchouhan@gmail.com
+                    prithvirajsinghworks@gmail.com
                   </p>
                 </div>
               </a>
@@ -350,43 +337,8 @@ export default function Contact() {
                 </motion.div>
               )}
 
-              {/* ── Unconfigured Key Warning ── */}
-              {status === 'unconfigured' && (
-                <motion.div
-                  key="unconfigured"
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  className="glass rounded-2xl p-8 flex flex-col items-center justify-center
-                    gap-5 text-center min-h-[420px] border border-amber-500/20"
-                >
-                  <div className="w-16 h-16 rounded-full bg-amber-500/10 border border-amber-500/30
-                    flex items-center justify-center text-amber-400 text-3xl">
-                    🔑
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-white mb-2">One Quick Setup Step</h3>
-                    <p className="text-slate-400 text-sm leading-relaxed">
-                      To activate the contact form, get your free key:
-                    </p>
-                    <ol className="text-left mt-4 space-y-2 text-sm text-slate-300">
-                      <li className="flex gap-2"><span className="text-purple-400 font-bold">1.</span>
-                        Go to <a href="https://web3forms.com" target="_blank" rel="noreferrer"
-                          className="text-purple-400 underline underline-offset-2">web3forms.com</a>
-                      </li>
-                      <li className="flex gap-2"><span className="text-purple-400 font-bold">2.</span>
-                        Enter your email → get Access Key in your inbox
-                      </li>
-                      <li className="flex gap-2"><span className="text-purple-400 font-bold">3.</span>
-                        Paste key in <code className="text-xs bg-white/10 px-1.5 py-0.5 rounded">Contact.jsx</code> line&nbsp;14
-                      </li>
-                    </ol>
-                  </div>
-                </motion.div>
-              )}
-
               {/* ── Main Form ── */}
-              {status !== 'success' && status !== 'unconfigured' && (
+              {status !== 'success' && (
                 <motion.form
                   key="form"
                   onSubmit={handleSubmit}
@@ -486,9 +438,9 @@ export default function Contact() {
                             d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                         </svg>
                         Something went wrong. Please email me directly at&nbsp;
-                        <a href="mailto:dipendrsinghchouhan@gmail.com"
+                        <a href="mailto:prithvirajsinghworks@gmail.com"
                           className="underline underline-offset-2">
-                          dipendrsinghchouhan@gmail.com
+                          prithvirajsinghworks@gmail.com
                         </a>
                       </motion.div>
                     )}

@@ -6,6 +6,7 @@ import Loader        from './components/Loader'
 import ScrollProgress from './components/ScrollProgress'
 import Navbar        from './components/Navbar'
 import Footer        from './components/Footer'
+import Chatbot       from './components/Chatbot'
 
 // ── Sections ────────────────────────────────────────────────────────────────
 import Hero          from './sections/Hero'
@@ -53,6 +54,9 @@ export default function App() {
 
           {/* Resume overlay */}
           <Resume isOpen={resumeOpen} onClose={() => setResumeOpen(false)} />
+
+          {/* AI Chatbot — floating, isolated */}
+          <Chatbot />
         </div>
       )}
     </>

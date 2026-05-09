@@ -11,7 +11,7 @@ const SOCIALS = [
 
 // ── Quick suggestion chips ───────────────────────────────────────────────────
 const CHIPS = [
-  'What are your strengths?',
+  'Tell me about yourself',
   'What are your skills?',
   'Are you available for hire?',
   'What projects have you built?',
@@ -30,10 +30,10 @@ async function generateLocalResponse(userMessage) {
   })
 
   // ── Social media keyword detection (check first — returns rich links) ──
-  const wantsGitHub    = has('github', 'git hub', 'my code', 'repo', 'repository', 'source code', 'code link')
-  const wantsLinkedIn  = has('linkedin', 'linked in', 'professional profile', 'professional network', 'ln')
+  const wantsGitHub = has('github', 'git hub', 'my code', 'repo', 'repository', 'source code', 'code link')
+  const wantsLinkedIn = has('linkedin', 'linked in', 'professional profile', 'professional network', 'ln')
   const wantsInstagram = has('instagram', 'insta', 'ig profile', 'reels', 'follow me', ' ig ')
-  const wantsSocial    = has('social', 'social media', 'my links', 'find you', 'follow', 'accounts', 'handles', 'connect', 'profile', 'all links')
+  const wantsSocial = has('social', 'social media', 'my links', 'find you', 'follow', 'accounts', 'handles', 'connect', 'profile', 'all links')
 
   if (wantsGitHub && !wantsLinkedIn && !wantsInstagram) {
     return {
@@ -66,7 +66,7 @@ async function generateLocalResponse(userMessage) {
     hire: "Yes! I'm available for internships, freelance projects, and collaborations. Feel free to reach out at prithvirajsinghworks@gmail.com",
     projects: "I'm currently building a Delivery Time Prediction project using Regression — should be live soon! Check my GitHub for the source code.",
     based: "I'm based in Indore, Madhya Pradesh, India. Currently in my 2nd year at Acropolis Institute of Technology and Research.",
-    about:          "Hello !!! I'm Prithviraj Singh Chouhan, a 2nd-year Computer Science student at Acropolis Institute, Indore, specializing in AI/ML. I'm proficient in Python, C++, and data science tools like NumPy and Pandas. My goal is to land an internship where I can apply my skills and grow. I'm based in Indore and always open to exciting opportunities!",
+    about: "Hi! I'm Prithviraj, a CS student at Acropolis Institute specializing in AI/ML. I code in Python and C++, and I'm actively looking for exciting internship opportunities!",
     python: "Python is one of my strong suits! I use it for data analysis, machine learning, and building AI-powered applications with libraries like NumPy and Pandas.",
     cpp: "I have strong knowledge of C++! It's one of my core programming languages and I use it for competitive programming and systems-level development.",
     numpy: "NumPy is essential for my data science work! I use it for numerical computations, array manipulation, and mathematical operations in ML projects.",
@@ -87,24 +87,24 @@ async function generateLocalResponse(userMessage) {
   const matched = []
 
   const rules = [
-    [has('who are', 'who is', 'yourself', 'introduce', 'tell me about yourself', 'describe yourself', 'about you'),                                     'about'],
-    [has('skill', 'skills', 'know', 'proficient', 'good at', 'expertise', 'abilities', 'tech stack', 'technologies', 'stack'),                        'skills'],
-    [has('cert', 'certif', 'certificate', 'certification', 'certified', 'course', 'badge', 'credential', 'qualification', 'achievement'),              'certifications'],
+    [has('who are', 'who is', 'yourself', 'introduce', 'tell me about yourself', 'describe yourself', 'about you'), 'about'],
+    [has('skill', 'skills', 'know', 'proficient', 'good at', 'expertise', 'abilities', 'tech stack', 'technologies', 'stack'), 'skills'],
+    [has('cert', 'certif', 'certificate', 'certification', 'certified', 'course', 'badge', 'credential', 'qualification', 'achievement'), 'certifications'],
     [has('project', 'projects', 'built', 'building', 'work on', 'making', 'working on', 'portfolio work', 'app', 'application', 'what have you made'), 'projects'],
-    [has('python', 'py language'),                                                                                                                       'python'],
-    [has('c++', 'cpp', 'c plus plus', 'cplusplus'),                                                                                                     'cpp'],
-    [has('numpy', 'np', 'numerical python'),                                                                                                             'numpy'],
-    [has('pandas', 'pd', 'dataframe', 'data frame'),                                                                                                    'pandas'],
-    [has('machine learning', 'deep learning', ' ml ', 'ml?', 'neural', 'ai?', 'artificial intelligence', 'data science', 'regression', 'training'),   'ml'],
-    [has('hobbies', 'hobby', 'interest', 'sports', 'cricket', 'badminton', 'fun', 'free time', 'outside', 'passion', 'like to do', 'play', 'game'),   'hobbies'],
-    [has('experience', 'started', 'journey', 'since', 'background', 'how long', 'years of', 'coding since', 'when did you start'),                    'experience'],
-    [has('language', 'speak', 'hindi', 'english', 'fluent', 'tongue', 'languages you know'),                                                           'languages'],
-    [has('goal', 'future', 'aspire', 'dream', 'aim', 'objective', 'plan', 'where do you see', 'ambition'),                                             'goals'],
-    [has('university', 'college', 'semester', 'acropolis', 'degree', 'study', 'studies', 'student', 'education', 'school', 'institute', 'btech'),      'university'],
-    [has('where', 'based', 'location', 'city', 'indore', 'place', 'live', 'from', 'hometown'),                                                         'based'],
-    [has('contact', 'reach', 'email', 'message', 'dm', 'talk to', 'get in touch', 'mail', 'gmail'),                                                    'contact'],
-    [has('hire', 'available', 'intern', 'internship', 'opportunity', 'collaborate', 'freelance', 'job', 'work with', 'open to', 'looking for work'),   'hire'],
-    [has('strength', 'strengths', 'good at', 'quick learner', 'teamwork', 'team player'),                                                              'strengths'],
+    [has('python', 'py language'), 'python'],
+    [has('c++', 'cpp', 'c plus plus', 'cplusplus'), 'cpp'],
+    [has('numpy', 'np', 'numerical python'), 'numpy'],
+    [has('pandas', 'pd', 'dataframe', 'data frame'), 'pandas'],
+    [has('machine learning', 'deep learning', ' ml ', 'ml?', 'neural', 'ai?', 'artificial intelligence', 'data science', 'regression', 'training'), 'ml'],
+    [has('hobbies', 'hobby', 'interest', 'sports', 'cricket', 'badminton', 'fun', 'free time', 'outside', 'passion', 'like to do', 'play', 'game'), 'hobbies'],
+    [has('experience', 'started', 'journey', 'since', 'background', 'how long', 'years of', 'coding since', 'when did you start'), 'experience'],
+    [has('language', 'speak', 'hindi', 'english', 'fluent', 'tongue', 'languages you know'), 'languages'],
+    [has('goal', 'future', 'aspire', 'dream', 'aim', 'objective', 'plan', 'where do you see', 'ambition'), 'goals'],
+    [has('university', 'college', 'semester', 'acropolis', 'degree', 'study', 'studies', 'student', 'education', 'school', 'institute', 'btech'), 'university'],
+    [has('where', 'based', 'location', 'city', 'indore', 'place', 'live', 'from', 'hometown'), 'based'],
+    [has('contact', 'reach', 'email', 'message', 'dm', 'talk to', 'get in touch', 'mail', 'gmail'), 'contact'],
+    [has('hire', 'available', 'intern', 'internship', 'opportunity', 'collaborate', 'freelance', 'job', 'work with', 'open to', 'looking for work'), 'hire'],
+    [has('strength', 'strengths', 'good at', 'quick learner', 'teamwork', 'team player'), 'strengths'],
   ]
 
   for (const [condition, key] of rules) {
@@ -186,17 +186,17 @@ export default function Chatbot() {
   const speakWithTTS = async (text) => {
     // ── Browser TTS (Natural & Clean) ──────────────────────────────────────
     if (!window.speechSynthesis) return
-    window.speechSynthesis.cancel() 
-    
+    window.speechSynthesis.cancel()
+
     const utter = new SpeechSynthesisUtterance(text)
-    utterRef.current = utter 
-    
+    utterRef.current = utter
+
     const voices = window.speechSynthesis.getVoices()
-    const preferredVoice = voices.find(v => v.lang.startsWith('en') && v.name.includes('Natural') && (v.name.includes('Guy') || v.name.includes('Male') || v.name.includes('David'))) 
+    const preferredVoice = voices.find(v => v.lang.startsWith('en') && v.name.includes('Natural') && (v.name.includes('Guy') || v.name.includes('Male') || v.name.includes('David')))
       || voices.find(v => v.lang.startsWith('en') && v.name.includes('Google') && (v.name.includes('Male') || v.name.includes('Guy')))
       || voices.find(v => v.lang.startsWith('en') && (v.name.includes('Male') || v.name.includes('Guy')))
       || voices.find(v => v.lang.startsWith('en'))
-    
+
     if (preferredVoice) utter.voice = preferredVoice
 
     utter.lang = 'en-US'
@@ -206,7 +206,7 @@ export default function Chatbot() {
     utter.onstart = () => setIsSpeaking(true)
     utter.onend = () => setIsSpeaking(false)
     utter.onerror = () => setIsSpeaking(false)
-    
+
     window.speechSynthesis.speak(utter)
   }
 
@@ -328,9 +328,9 @@ export default function Chatbot() {
   // ── Styles (theme-aware inline) ────────────────────────────────────────────
   const s = {
     window: {
-      position: 'fixed', 
-      bottom: 'calc(88px + env(safe-area-inset-bottom, 0px))', 
-      right: 'calc(24px + env(safe-area-inset-right, 0px))', 
+      position: 'fixed',
+      bottom: 'calc(88px + env(safe-area-inset-bottom, 0px))',
+      right: 'calc(24px + env(safe-area-inset-right, 0px))',
       zIndex: 9998,
       width: 380, maxWidth: 'calc(100vw - 48px)',
       height: 520, maxHeight: 'calc(100dvh - 120px)',
@@ -389,9 +389,9 @@ export default function Chatbot() {
       boxShadow: '0 4px 12px rgba(109,40,217,0.35)',
     },
     bubble: {
-      position: 'fixed', 
-      bottom: 'calc(24px + env(safe-area-inset-bottom, 0px))', 
-      right: 'calc(24px + env(safe-area-inset-right, 0px))', 
+      position: 'fixed',
+      bottom: 'calc(24px + env(safe-area-inset-bottom, 0px))',
+      right: 'calc(24px + env(safe-area-inset-right, 0px))',
       zIndex: 9999,
       width: 56, height: 56, borderRadius: '50%', border: 'none', cursor: 'pointer',
       background: 'linear-gradient(135deg,#3B0C8C,#6D28D9)',
@@ -555,7 +555,7 @@ export default function Chatbot() {
                 ref={inputRef}
                 rows={1}
                 style={s.input}
-                placeholder={isListening ? '🎙️ Listening…' : 'Ask me anything about my work…'}
+                placeholder={isListening ? '🎙️ Listening…' : 'Ask me anything…'}
                 value={input}
                 onChange={e => setInput(e.target.value)}
                 onKeyDown={handleKey}

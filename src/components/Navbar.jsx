@@ -161,7 +161,7 @@ export default function Navbar({ onResumeClick }) {
           </span>
           <ThemeToggle />
           <button
-            style={{ color: 'rgba(255,255,255,0.90)' }}
+            style={{ color: 'rgba(255,255,255,0.90)', padding: '4px' }}
             onClick={() => setMenuOpen(o => !o)}
             aria-label="Toggle menu"
           >

@@ -8,19 +8,19 @@
    White bg. Light grey cards. Deep purple navbar. Lavender accents.
    Exactly like the dashboard reference image.
    ════════════════════════════════════════════════════════════════════ */
-:root, :root.light {
-  --bg-primary:       #EDE8FF;      /* vivid lavender — NOT white, clearly purple-tinted */
-  --bg-secondary:     #DDD5FF;      /* deeper rich lavender */
-  --bg-card:          #FFFFFF;      /* pure white cards — maximum contrast */
+:root, html.light {
+  --bg-primary:       #F7F7FB;
+  --bg-secondary:     #ffffff;
+  --bg-card:          #f0eeff;
   --nav-bg:           linear-gradient(135deg,#3B0C8C,#6D28D9,#5B21B6); /* rich vivid purple */
-  --text-primary:     #1A1035;      /* deep dark navy */
-  --text-secondary:   #2D1B69;      /* deep purple */
+  --text-primary:     #1A1035;
+  --text-secondary:   #4B5563;
   --text-muted:       #5C4B9B;      /* mid purple */
   --text-faint:       #8B7EC8;      /* soft purple */
   --accent-primary:   #7C3AED;      /* vivid bright purple */
   --accent-secondary: #6366F1;      /* electric indigo */
   --accent-pop:       #EC4899;      /* hot pink */
-  --border-color:     #C4B5FD;      /* visible lavender border */
+  --border-color:     rgba(196, 181, 253, 0.4);
   --border-accent:    #A78BFA;      /* brighter lavender */
   --glass-bg:         #FFFFFF;
   --glass-blur:       0px;
@@ -40,19 +40,19 @@
 }
 
 /* ═══ DARK MODE ════════════════════════════════════════════════════════ */
-:root.dark {
+html.dark {
   --bg-primary:       #0a0a0f;
   --bg-secondary:     #111122;
   --bg-card:          #13131f;
   --nav-bg:           rgba(10,10,15,0.85);
-  --text-primary:     #f1f5f9;
-  --text-secondary:   #e2e8f0;
+  --text-primary:     #e2d9f3;
+  --text-secondary:   #94a3b8;
   --text-muted:       #94a3b8;
   --text-faint:       #64748b;
   --accent-primary:   #8b5cf6;
   --accent-secondary: #06b6d4;
   --accent-pop:       #ec4899;
-  --border-color:     rgba(99,102,241,0.18);
+  --border-color:     rgba(139, 92, 246, 0.2);
   --border-accent:    rgba(139,92,246,0.25);
   --glass-bg:         rgba(19,19,31,0.72);
   --glass-blur:       16px;

@@ -119,6 +119,9 @@ body {
   -webkit-backdrop-filter: blur(20px);
   padding-top: env(safe-area-inset-top, 0px);
   transition: background 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  /* Stabilize on mobile */
+  transform: translateZ(0);
+  will-change: transform;
 }
 :root.light .glass-nav, :root:not(.dark) .glass-nav {
   background: linear-gradient(135deg,#4A2DAA,#6D28D9,#5B21B6);
@@ -288,4 +291,10 @@ body {
 
 .glass,.glass-nav,body,nav,footer,section,main {
   transition:background-color 0.35s ease,border-color 0.35s ease,color 0.35s ease,box-shadow 0.35s ease;
+}
+
+/* Chatbot Mobile Stability */
+.chatbot-fixed {
+  transform: translateZ(0);
+  will-change: transform, bottom;
 }

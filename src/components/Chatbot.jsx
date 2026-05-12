@@ -149,6 +149,7 @@ export default function Chatbot() {
   const [isSpeaking, setIsSpeaking] = useState(false)
   const [isListening, setIsListening] = useState(false)    // 🎙️ STT
   const [sttSupported] = useState(() => !!(window.SpeechRecognition || window.webkitSpeechRecognition))
+  const [viewportBottom, setViewportBottom] = useState(0)
   const bottomRef = useRef(null)
   const inputRef = useRef(null)
   const recognitionRef = useRef(null)
@@ -293,6 +294,18 @@ export default function Chatbot() {
     }
   }, [])
 
+  // Visual Viewport Stability for Mobile
+  useEffect(() => {
+    if (!window.visualViewport) return
+    const handleResize = () => {
+      // Calculate how much the viewport has been pushed up (usually by the keyboard)
+      const offset = window.innerHeight - window.visualViewport.height
+      setViewportBottom(offset > 0 ? offset : 0)
+    }
+    window.visualViewport.addEventListener('resize', handleResize)
+    return () => window.visualViewport.removeEventListener('resize', handleResize)
+  }, [])
+
   const sendMessage = async (text) => {
     const userText = text.trim()
     if (!userText || loading) return
@@ -329,7 +342,7 @@ export default function Chatbot() {
   const s = {
     window: {
       position: 'fixed',
-      bottom: 'calc(88px + env(safe-area-inset-bottom, 0px))',
+      bottom: `calc(${88 + viewportBottom}px + env(safe-area-inset-bottom, 0px))`,
       right: 'calc(24px + env(safe-area-inset-right, 0px))',
       zIndex: 9998,
       width: 380, maxWidth: 'calc(100vw - 48px)',
@@ -340,6 +353,9 @@ export default function Chatbot() {
       boxShadow: isDark
         ? '0 24px 60px rgba(0,0,0,0.70), 0 0 0 1px rgba(139,92,246,0.25)'
         : '0 24px 60px rgba(74,45,170,0.20), 0 0 0 1px rgba(196,181,253,0.60)',
+      // Added for stability
+      transform: 'translateZ(0)',
+      willChange: 'transform, bottom, height',
     },
     header: {
       background: 'linear-gradient(135deg,#3B0C8C,#6D28D9,#5B21B6)',
@@ -390,13 +406,16 @@ export default function Chatbot() {
     },
     bubble: {
       position: 'fixed',
-      bottom: 'calc(24px + env(safe-area-inset-bottom, 0px))',
+      bottom: `calc(${24 + viewportBottom}px + env(safe-area-inset-bottom, 0px))`,
       right: 'calc(24px + env(safe-area-inset-right, 0px))',
       zIndex: 9999,
       width: 56, height: 56, borderRadius: '50%', border: 'none', cursor: 'pointer',
       background: 'linear-gradient(135deg,#3B0C8C,#6D28D9)',
       display: 'flex', alignItems: 'center', justifyContent: 'center',
       boxShadow: '0 8px 24px rgba(109,40,217,0.55)',
+      // Added for stability
+      transform: 'translateZ(0)',
+      willChange: 'transform, bottom',
     },
     chip: {
       padding: '6px 12px', borderRadius: 20, fontSize: 12, cursor: 'pointer',
@@ -419,6 +438,7 @@ export default function Chatbot() {
             exit={{ opacity: 0, y: 16, scale: 0.94 }}
             transition={{ type: 'spring', stiffness: 400, damping: 30 }}
             style={s.window}
+            className="chatbot-fixed"
           >
             {/* Header */}
             <div style={s.header}>
@@ -646,6 +666,7 @@ export default function Chatbot() {
         whileHover={{ scale: 1.10 }}
         whileTap={{ scale: 0.93 }}
         title="Chat with Prithviraj's AI"
+        className="chatbot-fixed"
       >
         <AnimatePresence mode="wait" initial={false}>
           {open ? (

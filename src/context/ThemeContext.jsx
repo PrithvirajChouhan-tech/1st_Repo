@@ -4,8 +4,9 @@ const ThemeContext = createContext()
 
 export function ThemeProvider({ children }) {
   const [isDark, setIsDark] = useState(() => {
-    // Default: light mode
+    // Default: dark mode (fall back to true when no preference saved)
     const saved = localStorage.getItem('portfolio-theme')
+    if (saved === null) return true   // first visit → dark
     return saved === 'dark'
   })
 

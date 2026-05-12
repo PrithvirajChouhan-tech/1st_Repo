@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FileText } from 'lucide-react'
+import { FileText, Brain } from 'lucide-react'
 import ThemeToggle from './ThemeToggle'
 import { useTheme } from '../context/ThemeContext'
 
@@ -56,9 +56,13 @@ export default function Navbar({ onResumeClick }) {
           className="text-2xl font-bold font-poppins tracking-tight flex items-center gap-2"
           whileHover={{ scale: 1.05 }}
         >
-          <span style={{ color: '#ffffff' }}>My</span>
-          {/* Use solid color — webkit-background-clip:text breaks inside purple nav */}
-          <span style={{ color: isDark ? '#a78bfa' : '#FCD34D' }}>Portfolio</span>
+          <div className="p-1.5 rounded-lg bg-gradient-to-br from-purple-500 to-indigo-600 shadow-lg shadow-purple-500/20">
+            <Brain className="w-6 h-6 text-white" strokeWidth={2.5} />
+          </div>
+          <div className="flex items-center gap-1">
+            <span style={{ color: '#ffffff' }}>My</span>
+            <span style={{ color: isDark ? '#a78bfa' : '#FCD34D' }}>Portfolio</span>
+          </div>
         </motion.a>
 
         {/* Desktop Links */}

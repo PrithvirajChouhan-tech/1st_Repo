@@ -4,10 +4,11 @@ const ThemeContext = createContext()
 
 export function ThemeProvider({ children }) {
   const [isDark, setIsDark] = useState(() => {
-    // Default: dark mode (fall back to true when no preference saved)
     const saved = localStorage.getItem('portfolio-theme')
-    if (saved === null) return true   // first visit → dark
-    return saved === 'dark'
+    if (saved !== null) return saved === 'dark'
+    // First visit: dark on mobile, light on desktop
+    const isMobile = window.innerWidth < 768
+    return isMobile
   })
 
   useEffect(() => {

@@ -31,7 +31,7 @@ const SKILLS = [
   },
   {
     name: 'NumPy',
-    level: 'Complete',
+    level: 'Library',
     percent: '100%',
     color: '#4d77cf',
     shadow: 'rgba(77,119,207,0.4)',
@@ -54,7 +54,7 @@ const SKILLS = [
   },
   {
     name: 'Pandas',
-    level: 'Complete',
+    level: 'Library',
     percent: '100%',
     color: '#ffca00',
     shadow: 'rgba(255,202,0,0.4)',
@@ -68,7 +68,7 @@ const SKILLS = [
   },
   {
     name: 'Matplotlib',
-    level: 'Complete',
+    level: 'Library',
     percent: '100%',
     color: '#f97316',
     shadow: 'rgba(249,115,22,0.4)',

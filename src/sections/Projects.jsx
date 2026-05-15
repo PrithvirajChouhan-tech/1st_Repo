@@ -2,39 +2,61 @@ import { useRef, useState } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { useTheme } from '../context/ThemeContext'
 
-// ─── Robot Icon for Alimony project ────────────────────────────────────────────
-const RobotIcon = () => {
+// ─── Premium Balance Scale (Taraju) Logo for Alimony project ──────────────
+const AlimonyLogo = () => {
   const { isDark } = useTheme()
-  const color = isDark ? '#FCD34D' : '#d97706' // Bright amber for dark, Deep amber for light
+  const gold   = isDark ? '#FBBF24' : '#b45309'
+  const gold2  = isDark ? '#F59E0B' : '#92400e'
+  const glow   = isDark ? 'rgba(251,191,36,0.35)' : 'rgba(180,83,9,0.20)'
 
   return (
-    <svg width="42" height="42" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <filter id="glow">
-          <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
-          <feMerge>
-            <feMergeNode in="coloredBlur"/>
-            <feMergeNode in="SourceGraphic"/>
-          </feMerge>
+        <radialGradient id="bgGrad" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor={isDark ? '#1e1a0e' : '#fef3c7'} />
+          <stop offset="100%" stopColor={isDark ? '#0f0e09' : '#fde68a'} />
+        </radialGradient>
+        <filter id="scaleglow">
+          <feGaussianBlur stdDeviation="1.2" result="blur" />
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
         </filter>
       </defs>
-      {/* Robot Head */}
-      <rect x="8" y="10" width="24" height="20" rx="5" stroke={color} strokeWidth="2.5" fill={`${color}15`} style={isDark ? { filter: 'url(#glow)' } : {}} />
-      {/* Eyes - Glowing */}
-      <circle cx="15" cy="18" r="2.5" fill={isDark ? 'white' : color}>
-        <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite" />
-      </circle>
-      <circle cx="25" cy="18" r="2.5" fill={isDark ? 'white' : color}>
-        <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite" />
-      </circle>
-      {/* Mouth */}
-      <rect x="15" y="24" width="10" height="2" rx="1" fill={color} opacity="0.8" />
-      {/* Antennas */}
-      <line x1="20" y1="10" x2="20" y2="5" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
-      <circle cx="20" cy="4" r="2" fill={isDark ? 'white' : color} style={isDark ? { filter: 'url(#glow)' } : {}} />
-      {/* Side details */}
-      <rect x="5" y="16" width="3" height="8" rx="1.5" fill={color} />
-      <rect x="32" y="16" width="3" height="8" rx="1.5" fill={color} />
+
+      {/* Background circle */}
+      <circle cx="24" cy="24" r="23" fill="url(#bgGrad)" stroke={gold} strokeWidth="1.2" opacity="0.9"/>
+
+      {/* Top ring */}
+      <circle cx="24" cy="9" r="2" fill={gold} filter="url(#scaleglow)" />
+
+      {/* Central pole */}
+      <rect x="23.1" y="9" width="1.8" height="26" rx="0.9" fill={gold2} />
+
+      {/* Horizontal beam */}
+      <rect x="10" y="16.5" width="28" height="2" rx="1" fill={gold} filter="url(#scaleglow)" />
+      {/* Beam center knot */}
+      <circle cx="24" cy="17.5" r="2.5" fill={gold} />
+
+      {/* Left chain (3 segments) */}
+      <line x1="12.5" y1="18.5" x2="12" y2="22" stroke={gold2} strokeWidth="1.2" strokeLinecap="round"/>
+      <line x1="12" y1="22" x2="12.5" y2="25.5" stroke={gold2} strokeWidth="1.2" strokeLinecap="round"/>
+      <line x1="12.5" y1="25.5" x2="12" y2="29" stroke={gold2} strokeWidth="1.2" strokeLinecap="round"/>
+
+      {/* Right chain (3 segments, lower = weighted side) */}
+      <line x1="35.5" y1="18.5" x2="36" y2="22.5" stroke={gold2} strokeWidth="1.2" strokeLinecap="round"/>
+      <line x1="36" y1="22.5" x2="35.5" y2="26.5" stroke={gold2} strokeWidth="1.2" strokeLinecap="round"/>
+      <line x1="35.5" y1="26.5" x2="36" y2="31" stroke={gold2} strokeWidth="1.2" strokeLinecap="round"/>
+
+      {/* Left pan */}
+      <ellipse cx="12" cy="29.5" rx="6" ry="1.5" fill={gold} opacity="0.9"/>
+      <path d="M6 29.5 Q12 32 18 29.5" fill={isDark ? '#2a230a' : '#fef3c7'} stroke={gold} strokeWidth="1.3"/>
+
+      {/* Right pan (lower / heavier) */}
+      <ellipse cx="36" cy="31.5" rx="6" ry="1.5" fill={gold} opacity="0.9"/>
+      <path d="M30 31.5 Q36 34 42 31.5" fill={isDark ? '#2a230a' : '#fef3c7'} stroke={gold} strokeWidth="1.3"/>
+
+      {/* Base */}
+      <rect x="20" y="35" width="8" height="2" rx="1" fill={gold2} />
+      <rect x="17" y="37" width="14" height="2" rx="1" fill={gold} opacity="0.9"/>
     </svg>
   )
 }
@@ -54,7 +76,7 @@ const PROJECTS = [
     accentColor: '#f59e0b',
     github: 'https://github.com/PrithvirajChouhan-tech/Alimony_Estimation',
     demo: 'https://alimonyprediction.dipendrsinghchouhan.workers.dev/',
-    icon: <RobotIcon />,
+    icon: <AlimonyLogo />,
   },
   {
     id: 2,

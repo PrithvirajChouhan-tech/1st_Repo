@@ -97,8 +97,10 @@ export default function Navbar({ onResumeClick }) {
 
           {/* Resume */}
           <li>
-            <button
-              onClick={onResumeClick}
+            <a
+              href="/Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200"
               style={{ color: linkInactive }}
               onMouseEnter={e => e.currentTarget.style.color = '#ffffff'}
@@ -108,7 +110,7 @@ export default function Navbar({ onResumeClick }) {
                 <FileText className="w-4 h-4" style={{ color: '#F87171' }} />
                 Resume
               </span>
-            </button>
+            </a>
           </li>
         </ul>
 
@@ -202,14 +204,19 @@ export default function Navbar({ onResumeClick }) {
                   {label}
                 </a>
               ))}
-              <button
-                onClick={() => { setMenuOpen(false); onResumeClick?.() }}
+              <a
+                href="/Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-2 py-2.5 px-4 text-sm font-medium rounded-lg transition-all text-left w-full"
                 style={{ color: 'rgba(255,255,255,0.85)' }}
+                onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.10)'; e.currentTarget.style.color = '#ffffff' }}
+                onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'rgba(255,255,255,0.85)' }}
+                onClick={() => setMenuOpen(false)}
               >
                 <FileText className="w-4 h-4" style={{ color: '#F87171' }} />
                 Resume
-              </button>
+              </a>
             </div>
           </motion.div>
         )}

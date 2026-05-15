@@ -40,7 +40,7 @@ export default function Resume({ isOpen, onClose }) {
 
             <div className="flex items-center gap-3">
               <a
-                href="/resume.pdf"
+                href="/Resume.pdf"
                 download
                 className="flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold
                   transition-all duration-300 shadow-lg"
@@ -73,58 +73,25 @@ export default function Resume({ isOpen, onClose }) {
             </div>
           </motion.div>
 
-          {/* Content */}
+          {/* PDF Embed */}
           <motion.div
-            className="relative z-10 flex-1 flex items-center justify-center p-6 sm:p-10 overflow-auto"
-            initial={{ scale: 0.9, opacity: 0 }}
+            className="relative z-10 flex-1 p-4 sm:p-6 overflow-hidden"
+            initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.15, type: 'spring', stiffness: 200, damping: 25 }}
           >
-            <div className="w-full max-w-2xl aspect-[8.5/11] glass rounded-2xl flex flex-col items-center justify-center gap-6 p-10 relative overflow-hidden">
-              <div className="absolute top-4 left-4 w-8 h-8 border-t-2 border-l-2 border-violet-500/30 rounded-tl-lg" />
-              <div className="absolute top-4 right-4 w-8 h-8 border-t-2 border-r-2 border-purple-500/30 rounded-tr-lg" />
-              <div className="absolute bottom-4 left-4 w-8 h-8 border-b-2 border-l-2 border-violet-500/30 rounded-bl-lg" />
-              <div className="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-purple-500/30 rounded-br-lg" />
-
-              <div className="relative z-10 flex flex-col items-center text-center gap-4">
-                <motion.div
-                  className="w-20 h-20 rounded-2xl flex items-center justify-center"
-                  style={{
-                    background: 'linear-gradient(135deg, rgba(124,58,237,0.15), rgba(196,181,253,0.15))',
-                    border: `1px solid ${isDark ? 'rgba(255,255,255,0.10)' : '#DDD0F8'}`,
-                  }}
-                  animate={{ y: [0, -8, 0] }}
-                  transition={{ duration: 3, repeat: Infinity }}
-                >
-                  <span className="text-4xl">📄</span>
-                </motion.div>
-
-                <h3 className="text-xl font-bold"
-                  style={{ color: isDark ? '#f1f5f9' : '#1E1033' }}>Resume Coming Soon</h3>
-                <p className="text-sm max-w-sm leading-relaxed"
-                  style={{ color: isDark ? '#94a3b8' : '#6b5c8a' }}>
-                  Upload your resume PDF to{' '}
-                  <code className="text-xs px-1.5 py-0.5 rounded"
-                    style={{
-                      background: isDark ? 'rgba(255,255,255,0.10)' : 'rgba(124,58,237,0.08)',
-                      color: '#7c3aed',
-                    }}>
-                    public/resume.pdf
-                  </code>{' '}
-                  and it will appear here with a download option.
-                </p>
-
-                <div className="flex flex-col items-center gap-2 mt-4">
-                  {['Add your PDF to the public folder', 'It will auto-embed & become downloadable'].map((txt, i) => (
-                    <div key={i} className="flex items-center gap-2 text-xs"
-                      style={{ color: isDark ? '#64748b' : '#9180b8' }}>
-                      <div className="w-1.5 h-1.5 rounded-full"
-                        style={{ background: i === 0 ? '#7c3aed' : '#C4B5FD' }} />
-                      <span>{txt}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
+            <div className="w-full h-full rounded-2xl overflow-hidden shadow-2xl"
+              style={{
+                border: `1px solid ${isDark ? 'rgba(255,255,255,0.10)' : '#DDD0F8'}`,
+                minHeight: '70vh',
+              }}
+            >
+              <iframe
+                src="/Resume.pdf"
+                title="Resume"
+                className="w-full h-full"
+                style={{ minHeight: '70vh', border: 'none' }}
+              />
             </div>
           </motion.div>
         </motion.div>

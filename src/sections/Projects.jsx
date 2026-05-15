@@ -1,6 +1,29 @@
 import { useRef, useState } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 
+// ─── ML Icon for Alimony project ────────────────────────────────────────────
+const MLRegressionIcon = ({ color = '#f59e0b' }) => (
+  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    {/* Axes */}
+    <line x1="6" y1="34" x2="6" y2="6" stroke={color} strokeWidth="1.5" strokeLinecap="round" opacity="0.6"/>
+    <line x1="6" y1="34" x2="34" y2="34" stroke={color} strokeWidth="1.5" strokeLinecap="round" opacity="0.6"/>
+    {/* Regression line */}
+    <line x1="8" y1="30" x2="32" y2="10" stroke={color} strokeWidth="2" strokeLinecap="round" opacity="0.9"/>
+    {/* Data points */}
+    <circle cx="10" cy="29" r="2.2" fill={color} opacity="0.85"/>
+    <circle cx="15" cy="26" r="2.2" fill={color} opacity="0.85"/>
+    <circle cx="19" cy="22" r="2.2" fill={color} opacity="0.85"/>
+    <circle cx="24" cy="17" r="2.2" fill={color} opacity="0.85"/>
+    <circle cx="29" cy="14" r="2.2" fill={color} opacity="0.85"/>
+    {/* Neural nodes (top-right accent) */}
+    <circle cx="32" cy="8" r="2" fill={color} opacity="0.5"/>
+    <circle cx="36" cy="12" r="1.5" fill={color} opacity="0.35"/>
+    <circle cx="36" cy="6" r="1.5" fill={color} opacity="0.35"/>
+    <line x1="32" y1="8" x2="36" y2="12" stroke={color} strokeWidth="1" opacity="0.3"/>
+    <line x1="32" y1="8" x2="36" y2="6" stroke={color} strokeWidth="1" opacity="0.3"/>
+  </svg>
+)
+
 // ─── Project data (edit freely) ────────────────────────────────────────────
 const PROJECTS = [
   {
@@ -16,7 +39,7 @@ const PROJECTS = [
     accentColor: '#f59e0b',
     github: 'https://github.com/PrithvirajChouhan-tech/Alimony_Estimation',
     demo: 'https://alimonyprediction.dipendrsinghchouhan.workers.dev/',
-    icon: '🧠',
+    icon: <MLRegressionIcon color="#f59e0b" />,
   },
   {
     id: 2,
@@ -77,7 +100,7 @@ function ProjectCard({ project, index }) {
           }}
         />
         <div className="relative z-10 flex items-start justify-between">
-          <span className="text-4xl">{project.icon}</span>
+          <span className={typeof project.icon === 'string' ? 'text-4xl' : ''}>{project.icon}</span>
           <span className={`text-xs font-semibold px-3 py-1 rounded-full border ${project.statusBg} ${project.statusColor}`}>
             {project.status}
           </span>

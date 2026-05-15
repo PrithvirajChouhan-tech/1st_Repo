@@ -2,27 +2,34 @@ import { useRef, useState } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 
 // ─── Robot Icon for Alimony project ────────────────────────────────────────────
-const RobotIcon = ({ color = '#f59e0b' }) => (
-  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+const RobotIcon = ({ color = '#FCD34D' }) => (
+  <svg width="42" height="42" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <filter id="glow">
+        <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+        <feMerge>
+          <feMergeNode in="coloredBlur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+    </defs>
     {/* Robot Head */}
-    <rect x="10" y="12" width="20" height="16" rx="4" stroke={color} strokeWidth="2" fill={`${color}10`} />
-    {/* Eyes */}
-    <circle cx="16" cy="19" r="2" fill={color}>
-      <animate attributeName="opacity" values="1;0.4;1" dur="2s" repeatCount="indefinite" />
+    <rect x="8" y="10" width="24" height="20" rx="5" stroke={color} strokeWidth="2.5" fill={`${color}20`} style={{ filter: 'url(#glow)' }} />
+    {/* Eyes - Glowing */}
+    <circle cx="15" cy="18" r="2.5" fill="white">
+      <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite" />
     </circle>
-    <circle cx="24" cy="19" r="2" fill={color}>
-      <animate attributeName="opacity" values="1;0.4;1" dur="2s" repeatCount="indefinite" />
+    <circle cx="25" cy="18" r="2.5" fill="white">
+      <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite" />
     </circle>
-    {/* Mouth/Line */}
-    <line x1="16" y1="24" x2="24" y2="24" stroke={color} strokeWidth="1.5" strokeLinecap="round" opacity="0.6" />
+    {/* Mouth */}
+    <rect x="15" y="24" width="10" height="2" rx="1" fill={color} opacity="0.8" />
     {/* Antennas */}
-    <line x1="20" y1="12" x2="20" y2="8" stroke={color} strokeWidth="2" strokeLinecap="round" />
-    <circle cx="20" cy="7" r="1.5" fill={color} />
-    {/* Ears/Side details */}
-    <rect x="8" y="17" width="2" height="6" rx="1" fill={color} opacity="0.8" />
-    <rect x="30" y="17" width="2" height="6" rx="1" fill={color} opacity="0.8" />
-    {/* Neck */}
-    <rect x="17" y="28" width="6" height="3" rx="1" fill={color} opacity="0.4" />
+    <line x1="20" y1="10" x2="20" y2="5" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+    <circle cx="20" cy="4" r="2" fill="white" style={{ filter: 'url(#glow)' }} />
+    {/* Side details */}
+    <rect x="5" y="16" width="3" height="8" rx="1.5" fill={color} />
+    <rect x="32" y="16" width="3" height="8" rx="1.5" fill={color} />
   </svg>
 )
 
@@ -41,7 +48,7 @@ const PROJECTS = [
     accentColor: '#f59e0b',
     github: 'https://github.com/PrithvirajChouhan-tech/Alimony_Estimation',
     demo: 'https://alimonyprediction.dipendrsinghchouhan.workers.dev/',
-    icon: <RobotIcon color="#f59e0b" />,
+    icon: <RobotIcon color="#FCD34D" />,
   },
   {
     id: 2,

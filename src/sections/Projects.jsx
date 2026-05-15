@@ -1,37 +1,43 @@
 import { useRef, useState } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
+import { useTheme } from '../context/ThemeContext'
 
 // ─── Robot Icon for Alimony project ────────────────────────────────────────────
-const RobotIcon = ({ color = '#FCD34D' }) => (
-  <svg width="42" height="42" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <filter id="glow">
-        <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
-        <feMerge>
-          <feMergeNode in="coloredBlur"/>
-          <feMergeNode in="SourceGraphic"/>
-        </feMerge>
-      </filter>
-    </defs>
-    {/* Robot Head */}
-    <rect x="8" y="10" width="24" height="20" rx="5" stroke={color} strokeWidth="2.5" fill={`${color}20`} style={{ filter: 'url(#glow)' }} />
-    {/* Eyes - Glowing */}
-    <circle cx="15" cy="18" r="2.5" fill="white">
-      <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite" />
-    </circle>
-    <circle cx="25" cy="18" r="2.5" fill="white">
-      <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite" />
-    </circle>
-    {/* Mouth */}
-    <rect x="15" y="24" width="10" height="2" rx="1" fill={color} opacity="0.8" />
-    {/* Antennas */}
-    <line x1="20" y1="10" x2="20" y2="5" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
-    <circle cx="20" cy="4" r="2" fill="white" style={{ filter: 'url(#glow)' }} />
-    {/* Side details */}
-    <rect x="5" y="16" width="3" height="8" rx="1.5" fill={color} />
-    <rect x="32" y="16" width="3" height="8" rx="1.5" fill={color} />
-  </svg>
-)
+const RobotIcon = () => {
+  const { isDark } = useTheme()
+  const color = isDark ? '#FCD34D' : '#d97706' // Bright amber for dark, Deep amber for light
+
+  return (
+    <svg width="42" height="42" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+          <feMerge>
+            <feMergeNode in="coloredBlur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
+      {/* Robot Head */}
+      <rect x="8" y="10" width="24" height="20" rx="5" stroke={color} strokeWidth="2.5" fill={`${color}15`} style={isDark ? { filter: 'url(#glow)' } : {}} />
+      {/* Eyes - Glowing */}
+      <circle cx="15" cy="18" r="2.5" fill={isDark ? 'white' : color}>
+        <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite" />
+      </circle>
+      <circle cx="25" cy="18" r="2.5" fill={isDark ? 'white' : color}>
+        <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite" />
+      </circle>
+      {/* Mouth */}
+      <rect x="15" y="24" width="10" height="2" rx="1" fill={color} opacity="0.8" />
+      {/* Antennas */}
+      <line x1="20" y1="10" x2="20" y2="5" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+      <circle cx="20" cy="4" r="2" fill={isDark ? 'white' : color} style={isDark ? { filter: 'url(#glow)' } : {}} />
+      {/* Side details */}
+      <rect x="5" y="16" width="3" height="8" rx="1.5" fill={color} />
+      <rect x="32" y="16" width="3" height="8" rx="1.5" fill={color} />
+    </svg>
+  )
+}
 
 // ─── Project data (edit freely) ────────────────────────────────────────────
 const PROJECTS = [
@@ -48,7 +54,7 @@ const PROJECTS = [
     accentColor: '#f59e0b',
     github: 'https://github.com/PrithvirajChouhan-tech/Alimony_Estimation',
     demo: 'https://alimonyprediction.dipendrsinghchouhan.workers.dev/',
-    icon: <RobotIcon color="#FCD34D" />,
+    icon: <RobotIcon />,
   },
   {
     id: 2,

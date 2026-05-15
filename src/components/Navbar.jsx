@@ -2,28 +2,6 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FileText } from 'lucide-react'
 
-// ML Neural-Network icon (custom SVG)
-const MLIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    {/* Nodes */}
-    <circle cx="4" cy="6" r="2" fill="white" opacity="0.9"/>
-    <circle cx="4" cy="18" r="2" fill="white" opacity="0.9"/>
-    <circle cx="12" cy="4" r="2" fill="white"/>
-    <circle cx="12" cy="12" r="2" fill="white"/>
-    <circle cx="12" cy="20" r="2" fill="white"/>
-    <circle cx="20" cy="8" r="2" fill="white" opacity="0.9"/>
-    <circle cx="20" cy="16" r="2" fill="white" opacity="0.9"/>
-    {/* Connections */}
-    <line x1="6" y1="6" x2="10" y2="4" stroke="white" strokeWidth="1" opacity="0.5"/>
-    <line x1="6" y1="6" x2="10" y2="12" stroke="white" strokeWidth="1" opacity="0.5"/>
-    <line x1="6" y1="18" x2="10" y2="12" stroke="white" strokeWidth="1" opacity="0.5"/>
-    <line x1="6" y1="18" x2="10" y2="20" stroke="white" strokeWidth="1" opacity="0.5"/>
-    <line x1="14" y1="4" x2="18" y2="8" stroke="white" strokeWidth="1" opacity="0.5"/>
-    <line x1="14" y1="12" x2="18" y2="8" stroke="white" strokeWidth="1" opacity="0.5"/>
-    <line x1="14" y1="12" x2="18" y2="16" stroke="white" strokeWidth="1" opacity="0.5"/>
-    <line x1="14" y1="20" x2="18" y2="16" stroke="white" strokeWidth="1" opacity="0.5"/>
-  </svg>
-)
 import ThemeToggle from './ThemeToggle'
 import { useTheme } from '../context/ThemeContext'
 
@@ -79,9 +57,7 @@ export default function Navbar({ onResumeClick }) {
           className="text-2xl font-bold font-poppins tracking-tight flex items-center gap-2"
           whileHover={{ scale: 1.05 }}
         >
-          <div className="p-1.5 rounded-lg bg-gradient-to-br from-purple-500 to-indigo-600 shadow-lg shadow-purple-500/20">
-            <MLIcon />
-          </div>
+
           <div className="flex items-center gap-1">
             <span style={{ color: '#ffffff' }}>My</span>
             <span style={{ color: isDark ? '#a78bfa' : '#FCD34D' }}>Portfolio</span>

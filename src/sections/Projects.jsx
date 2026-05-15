@@ -1,26 +1,28 @@
 import { useRef, useState } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 
-// ─── ML Icon for Alimony project ────────────────────────────────────────────
-const MLRegressionIcon = ({ color = '#f59e0b' }) => (
+// ─── Robot Icon for Alimony project ────────────────────────────────────────────
+const RobotIcon = ({ color = '#f59e0b' }) => (
   <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-    {/* Axes */}
-    <line x1="6" y1="34" x2="6" y2="6" stroke={color} strokeWidth="1.5" strokeLinecap="round" opacity="0.6"/>
-    <line x1="6" y1="34" x2="34" y2="34" stroke={color} strokeWidth="1.5" strokeLinecap="round" opacity="0.6"/>
-    {/* Regression line */}
-    <line x1="8" y1="30" x2="32" y2="10" stroke={color} strokeWidth="2" strokeLinecap="round" opacity="0.9"/>
-    {/* Data points */}
-    <circle cx="10" cy="29" r="2.2" fill={color} opacity="0.85"/>
-    <circle cx="15" cy="26" r="2.2" fill={color} opacity="0.85"/>
-    <circle cx="19" cy="22" r="2.2" fill={color} opacity="0.85"/>
-    <circle cx="24" cy="17" r="2.2" fill={color} opacity="0.85"/>
-    <circle cx="29" cy="14" r="2.2" fill={color} opacity="0.85"/>
-    {/* Neural nodes (top-right accent) */}
-    <circle cx="32" cy="8" r="2" fill={color} opacity="0.5"/>
-    <circle cx="36" cy="12" r="1.5" fill={color} opacity="0.35"/>
-    <circle cx="36" cy="6" r="1.5" fill={color} opacity="0.35"/>
-    <line x1="32" y1="8" x2="36" y2="12" stroke={color} strokeWidth="1" opacity="0.3"/>
-    <line x1="32" y1="8" x2="36" y2="6" stroke={color} strokeWidth="1" opacity="0.3"/>
+    {/* Robot Head */}
+    <rect x="10" y="12" width="20" height="16" rx="4" stroke={color} strokeWidth="2" fill={`${color}10`} />
+    {/* Eyes */}
+    <circle cx="16" cy="19" r="2" fill={color}>
+      <animate attributeName="opacity" values="1;0.4;1" dur="2s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="24" cy="19" r="2" fill={color}>
+      <animate attributeName="opacity" values="1;0.4;1" dur="2s" repeatCount="indefinite" />
+    </circle>
+    {/* Mouth/Line */}
+    <line x1="16" y1="24" x2="24" y2="24" stroke={color} strokeWidth="1.5" strokeLinecap="round" opacity="0.6" />
+    {/* Antennas */}
+    <line x1="20" y1="12" x2="20" y2="8" stroke={color} strokeWidth="2" strokeLinecap="round" />
+    <circle cx="20" cy="7" r="1.5" fill={color} />
+    {/* Ears/Side details */}
+    <rect x="8" y="17" width="2" height="6" rx="1" fill={color} opacity="0.8" />
+    <rect x="30" y="17" width="2" height="6" rx="1" fill={color} opacity="0.8" />
+    {/* Neck */}
+    <rect x="17" y="28" width="6" height="3" rx="1" fill={color} opacity="0.4" />
   </svg>
 )
 
@@ -39,7 +41,7 @@ const PROJECTS = [
     accentColor: '#f59e0b',
     github: 'https://github.com/PrithvirajChouhan-tech/Alimony_Estimation',
     demo: 'https://alimonyprediction.dipendrsinghchouhan.workers.dev/',
-    icon: <MLRegressionIcon color="#f59e0b" />,
+    icon: <RobotIcon color="#f59e0b" />,
   },
   {
     id: 2,
